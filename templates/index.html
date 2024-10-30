@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Selector & File Upload</title>
+    <!-- Correct the path for the stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h3>Select an Animal</h3>
+            <label><input type="radio" name="animal" value="cat"> Cat</label><br>
+            <label><input type="radio" name="animal" value="dog"> Dog</label><br>
+            <label><input type="radio" name="animal" value="elephant"> Elephant</label><br>
+            <button onclick="showImage()">Show Image</button>
+            <div id="image-container"></div>
+        </div>
+        <div class="box">
+            <h3>Upload a File</h3>
+            <input type="file" id="fileInput">
+            <button onclick="uploadFile()">Upload</button>
+            <div id="file-info"></div>
+        </div>
+    </div>
+
+    <!-- Correct the path for the JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
