@@ -64,36 +64,40 @@ function showImage() {
 }
 
 // Function to handle file upload and display file information
-// function uploadFile() {
+function uploadFile() {
+        // fileInfo.innerHTML = '<p>in uploadfile function.</p>'
+        const file = fileInput.files[0];
+        
+        // If no file is selected, show an alert
+        if (!file) {
+            alert("Please select a file to upload.");
+            return;
+        }
 
-//     const fileInput = document.getElementById("fileInput");
-//     const uploadButton = document.querySelector("button[onclick='uploadFile()']");
-//     const file = fileInput.files[0];
-//     // If no file is selected, show an alert
-//     if (!file) {
-//         alert("Please select a file to upload.");
-//         return;
-//     }
+        const formData = new FormData();
 
-//     // Proceed with the file upload process if a file is selected
-//     const formData = new FormData();
-//     formData.append("file", file);
+        formData.append('file', file);
+        
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                fileInfo.innerHTML = `<p>Error: ${data.error}</p>`;
+            } else {
+                fileInfo.innerHTML = `
+                    <p>File Name: ${data.name}</p>
+                    <p>File Size: ${data.size}</p>
+                    <p>File Type: ${data.type}</p>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            fileInfo.innerHTML = '<p>An error occurred while uploading the file.</p>';
+        });
+        
+}
 
-//     // Display the image if always stored in specified location
-//     // fileInfo.innerHTML = `<img src="image/${file.name}" alt="${file.name}">`;
-
-//     // Use FileReader to read the file as a data URL if file store any location
-//     const reader = new FileReader();
-//     reader.onload = function(event) {
-//         // Display the image using the data URL
-//         fileInfo.innerHTML = `<img src="${event.target.result}" alt="${file.name}">`;
-
-//         const messageElement = document.createElement("div");
-//         messageElement.className = "message file-details";
-//         messageElement.textContent = `File details: ${file.name}, ${file.size} bytes, ${file.type}`;
-//         fileInfo.appendChild(messageElement);
-//     }
-//     // Read the file as a data URL
-//     reader.readAsDataURL(file);
-
-// }
