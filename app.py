@@ -23,39 +23,7 @@ def get_animal_image():
     if not animal_name:
         return jsonify({'error': 'No animal specified'}), 400
 
-    # # Construct the image path
-    # image_path = os.path.join(app.config['IMAGE_FOLDER'], f"{animal_name}.jpg")
-    # print(image_path)
-    # # Check if the image exists
-    # if not os.path.exists(image_path):
-    #     return jsonify({'error': 'Image not found'}), 404
-
-    # Return the image URL (relative to the server's root)
     return jsonify({'image_url': f"/static/images/{animal_name}.jpg"}), 200
-
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
-    
-    file = request.files['file']
-    
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
-    
-    if file:
-        filename = file.filename
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-        
-        file_size = os.path.getsize(file_path)
-        file_type = file.content_type
-        print("sending file details: {filename}, {filesize}, {file_type}")
-        return jsonify({
-            'name': filename,
-            'size': f"{file_size} bytes",
-            'type': file_type
-        })
 
 
 if __name__ == '__main__':
