@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Function to display the selected animal image
-// Function to display the selected animal image
 function showImage() {
     
     let selectedAnimal = null;
@@ -41,7 +40,6 @@ function showImage() {
         return;
     }
 
-    // Display the image in the image container
     // Fetch the animal image URL from the Flask server
     fetch(`/get-animal-image?animal=${selectedAnimal}`)
         .then(response => response.json())
@@ -59,7 +57,7 @@ function showImage() {
             console.error("Error fetching animal image:", error);
             imageContainer.innerHTML = `<p>Error fetching image.</p>`;
         });
-        // imageContainer.innerHTML = `<img src="/static/images/${selectedAnimal}.jpg" alt="${selectedAnimal}">`;
+
     
 }
 
