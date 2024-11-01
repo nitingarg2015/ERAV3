@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Function to display the selected animal image
-// Function to display the selected animal image
 function showImage() {
     
     let selectedAnimal = null;
@@ -58,6 +57,45 @@ function showImage() {
             console.error("Error fetching animal image:", error);
             imageContainer.innerHTML = `<p>Error fetching image.</p>`;
         });
+
+    
 }
 
+// Function to handle file upload and display file information
+function uploadFile() {
+        // fileInfo.innerHTML = '<p>in uploadfile function.</p>'
+        const file = fileInput.files[0];
+        
+        // If no file is selected, show an alert
+        if (!file) {
+            alert("Please select a file to upload.");
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append('file', file);
+        
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                fileInfo.innerHTML = `<p>Error: ${data.error}</p>`;
+            } else {
+                fileInfo.innerHTML = `
+                    <p>File Name: ${data.name}</p>
+                    <p>File Size: ${data.size}</p>
+                    <p>File Type: ${data.type}</p>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            fileInfo.innerHTML = '<p>An error occurred while uploading the file.</p>';
+        });
+        
+}
 
