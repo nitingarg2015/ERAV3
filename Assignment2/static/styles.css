@@ -2,16 +2,23 @@
 .container {
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
-    gap: 20px;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.top-heading {
+    text-align: center;
+    color: blue;
+    margin-bottom: 20px;
 }
 
 /* Box styling */
 .box {
+    margin: 20px auto;
     border: 2px solid #87CEEB; /* Sky blue border */
     background-color: #f0f8ff; /* Light blue background */
     border-radius: 8px;
-    padding: 20px;
+    padding: 30px;
     width: 300px;
     text-align: left; /* Left-align the content inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
