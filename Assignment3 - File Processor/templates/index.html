@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Processor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Heading -->
+        <h1>File Processor</h1>
+        
+        <!-- File Upload Section -->
+        <div class="file-upload">
+            <input type="file" id="fileInput">
+            <!-- <label for="fileInput">Choose File</label> -->
+            <button id="uploadFileButton">Upload File</button>
+        </div>
+
+        <!-- File Metadata Display -->
+        <div id="fileMetadata" style="margin-top: 10px;"></div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button id="viewFileButton" disabled>View File</button>
+            <button id="viewPreprocessedFile" disabled>View Pre-processed File</button>
+            <button id="viewAugmentedFile" disabled>View Augmented File</button>
+        </div>
+
+        <!-- Output Display Section -->
+        <div id="output">Contents will appear here.</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
