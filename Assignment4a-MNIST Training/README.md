@@ -13,36 +13,9 @@ Demo Video:
 Write a simple 4 layer convolutional neural network, to be trained on MNIST. While the training is going on, i want to see the training logs and loss curves on an html page. use simple python flask server to do this. after training is done, show model. results on 10 random images picked from MNIST database. Use CUDE for training. write all the files including howTo.md file descibing the steps
 
 ## Model Summary
-----------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Conv2d-1           [-1, 32, 28, 28]             320
-              ReLU-2           [-1, 32, 28, 28]               0
-         MaxPool2d-3           [-1, 32, 14, 14]               0
-            Conv2d-4           [-1, 64, 14, 14]          18,496
-              ReLU-5           [-1, 64, 14, 14]               0
-         MaxPool2d-6             [-1, 64, 7, 7]               0
-            Conv2d-7            [-1, 128, 7, 7]          73,856
-              ReLU-8            [-1, 128, 7, 7]               0
-         MaxPool2d-9            [-1, 128, 3, 3]               0
-           Conv2d-10            [-1, 256, 3, 3]         295,168
-             ReLU-11            [-1, 256, 3, 3]               0
-AdaptiveAvgPool2d-12            [-1, 256, 1, 1]               0
-          Flatten-13                  [-1, 256]               0
-           Linear-14                  [-1, 128]          32,896
-             ReLU-15                  [-1, 128]               0
-          Dropout-16                  [-1, 128]               0
-           Linear-17                   [-1, 10]           1,290
-================================================================
-Total params: 422,026
-Trainable params: 422,026
-Non-trainable params: 0
-----------------------------------------------------------------
-Input size (MB): 0.00
-Forward/backward pass size (MB): 0.79
-Params size (MB): 1.61
-Estimated Total Size (MB): 2.41
-----------------------------------------------------------------
+
+![image](https://github.com/user-attachments/assets/0bebf035-b424-4b42-b5c3-f6d60592efd0)
+
 
 ## Prerequisites
 
