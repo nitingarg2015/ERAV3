@@ -3,7 +3,8 @@
 A web-based interactive tool for training and comparing different CNN configurations on the MNIST dataset. This application allows users to experiment with various hyperparameters and visualize training progress in real-time.
 
 ## Model Architecture
-![alt text](model.png)  
+
+![alt text](image-1.png)
 
 ## Features
 
