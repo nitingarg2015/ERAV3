@@ -43,27 +43,42 @@ function updatePlot(chart, runs) {
     const traces = [];
     runs.forEach((run, index) => {
         const colorIndex = index % colors.length;
-        // Add training loss trace
-        if (run.trainLoss.length > 0) {
-            traces.push({
-                x: run.epochs,
-                y: run.trainLoss,
-                name: `Run ${run.id} - Training Loss`,
-                mode: 'lines+markers',
-                line: { color: colors[colorIndex] },
-                showlegend: chart.element.id === 'loss-chart'
-            });
-        }
-        // Add test loss/accuracy trace
-        if (run.testLoss.length > 0) {
-            traces.push({
-                x: run.epochs,
-                y: chart.element.id === 'loss-chart' ? run.testLoss : run.testAcc,
-                name: `Run ${run.id} - ${chart.element.id === 'loss-chart' ? 'Test Loss' : 'Test Accuracy'}`,
-                mode: 'lines+markers',
-                line: { color: colors[colorIndex], dash: 'dashdot' },
-                showlegend: true
-            });
+        
+        if (chart.element.id === 'loss-chart') {
+            // Add training loss trace (only for loss chart)
+            if (run.trainLoss.length > 0) {
+                traces.push({
+                    x: run.epochs,
+                    y: run.trainLoss,
+                    name: `Run ${run.id} - Training Loss`,
+                    mode: 'lines+markers',
+                    line: { color: colors[colorIndex] },
+                    showlegend: true
+                });
+            }
+            // Add test loss trace
+            if (run.testLoss.length > 0) {
+                traces.push({
+                    x: run.epochs,
+                    y: run.testLoss,
+                    name: `Run ${run.id} - Test Loss`,
+                    mode: 'lines+markers',
+                    line: { color: colors[colorIndex], dash: 'dashdot' },
+                    showlegend: true
+                });
+            }
+        } else {
+            // Only add test accuracy trace for accuracy chart
+            if (run.testAcc.length > 0) {
+                traces.push({
+                    x: run.epochs,
+                    y: run.testAcc,
+                    name: `Run ${run.id} - Test Accuracy`,
+                    mode: 'lines+markers',
+                    line: { color: colors[colorIndex] },  // Removed dashdot style
+                    showlegend: true
+                });
+            }
         }
     });
 
