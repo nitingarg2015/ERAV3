@@ -9,6 +9,7 @@ The CNN architecture consists of:
 - Three configurable convolutional layers
 - Max pooling after each conv layer
 - Fully connected output layer (10 classes)
+  
 ![alt text](image-1.png)
 
 ## Features
