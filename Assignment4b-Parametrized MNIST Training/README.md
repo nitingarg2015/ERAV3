@@ -31,16 +31,16 @@ A web-based interactive tool for training and comparing different CNN configurat
 
 ## Project Structure
 
-mnist_cnn/
-├── static/
-│ ├── style.css # Styling for the web interface
-│ └── script.js # Frontend JavaScript for real-time updates
-├── templates/
-│ └── index.html # Main web interface template
-├── app.py # Flask application server
-├── model.py # CNN model architecture
-├── train.py # Training logic
-└── requirements.txt # Project dependencies
+mnist_cnn/ 
+├── static/ 
+│ ├── style.css # Styling for the web interface 
+│ └── script.js # Frontend JavaScript for real-time updates 
+├── templates/ 
+│ └── index.html # Main web interface template 
+├── app.py # Flask application server  
+├── model.py # CNN model architecture  
+├── train.py # Training logic  
+└── requirements.txt # Project dependencies  
 
 ## Installation
 1. Clone the repository
