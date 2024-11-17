@@ -1,0 +1,35 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+#loss-plot, #accuracy-plot {
+    margin: 20px 0;
+    height: 400px;
+}
+
+.prediction-item {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+canvas {
+    width: 140px;
+    height: 140px;
+    image-rendering: pixelated;
+} 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MNIST CNN Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Hyperparameters</h3>
+            <form id="training-form" action="/train" method="POST">
+                <div class="form-group">
+                    <label for="epochs">Epochs:</label>
+                    <input type="number" id="epochs" name="epochs" value="10" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="batch_size">Batch Size:</label>
+                    <input type="number" id="batch_size" name="batch_size" value="32" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="learning_rate">Learning Rate:</label>
+                    <input type="number" id="learning_rate" name="learning_rate" value="0.001" step="0.0001">
+                </div>
+                
+                <div class="form-group">
+                    <label for="optimizer">Optimizer:</label>
+                    <select id="optimizer" name="optimizer">
+                        <option value="adam">Adam</option>
+                        <option value="sgd">SGD</option>
+                    </select>
+                </div>
+                
+                <h4>Model Channels</h4>
+                <div class="form-group">
+                    <label for="channel_1">Layer 1:</label>
+                    <input type="number" id="channel_1" name="channel_1" value="32" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="channel_2">Layer 2:</label>
+                    <input type="number" id="channel_2" name="channel_2" value="64" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="channel_3">Layer 3:</label>
+                    <input type="number" id="channel_3" name="channel_3" value="128" min="1">
+                </div>
+                
+                <button type="submit">Train Model</button>
+            </form>
+        </div>
+        
+        <div class="main-content">
+            <h1>MNIST CNN Trainer</h1>
+            <div class="header-controls">
+                <button id="clear-runs" class="control-button">Clear All Runs</button>
+            </div>
+            <div id="training-status"></div>
+            <div class="charts-container">
+                <div id="loss-chart" class="chart"></div>
+                <div id="accuracy-chart" class="chart"></div>
+            </div>
+            <div id="run-comparison"></div>
+        </div>
+    </div>
+</body>
+</html> 

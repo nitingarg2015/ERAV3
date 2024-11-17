@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MNIST CNN Training</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>MNIST CNN Training Progress</h1>
+        <button onclick="startTraining()">Start Training</button>
+        <div id="training-status"></div>
+        <div id="loss-plot"></div>
+        <div id="accuracy-plot"></div>
+        <a href="/results" class="button">View Results</a>
+    </div>
+
+    <script>
+        const socket = io();
+        let lossData = {x: [], y: []};
+        let accuracyData = {x: [], y: []};
+
+        function startTraining() {
+            fetch('/start_training')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('training-status').innerHTML = 'Training in progress...';
+                });
+        }
+
+        socket.on('training_update', function(data) {
+            document.getElementById('training-status').innerHTML = 
+                `Epoch ${data.epoch}, Batch ${data.batch}, Loss: ${data.loss.toFixed(4)}`;
+        });
+
+        socket.on('epoch_end', function(data) {
+            lossData.x.push(data.epoch);
+            lossData.y.push(data.loss);
+            accuracyData.x.push(data.epoch);
+            accuracyData.y.push(data.accuracy);
+
+            Plotly.newPlot('loss-plot', [{
+                x: lossData.x,
+                y: lossData.y,
+                type: 'scatter',
+                name: 'Training Loss'
+            }], {title: 'Training Loss'});
+
+            Plotly.newPlot('accuracy-plot', [{
+                x: accuracyData.x,
+                y: accuracyData.y,
+                type: 'scatter',
+                name: 'Test Accuracy'
+            }], {title: 'Test Accuracy (%)'});
+        });
+    </script>
+</body>
+</html> 
