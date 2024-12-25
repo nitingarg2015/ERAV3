@@ -14,7 +14,6 @@
 ## Model Architecture  
 ----------------------------------------------------------------  
         Layer (type)               Output Shape         Param #  
-================================================================  
             Conv2d-1           [-1, 32, 16, 16]             864  
        BatchNorm2d-2           [-1, 32, 16, 16]              64  
               ReLU-3           [-1, 32, 16, 16]               0  
@@ -79,17 +78,14 @@
       BatchNorm2d-62            [-1, 128, 2, 2]             256  
              ReLU-63            [-1, 128, 2, 2]               0  
 AdaptiveAvgPool2d-64            [-1, 128, 1, 1]               0  
-           Linear-65                   [-1, 10]           1,290  
-================================================================  
+           Linear-65                   [-1, 10]           1,290    
 Total params: 158,282  
 Trainable params: 158,282  
 Non-trainable params: 0  
-----------------------------------------------------------------  
 Input size (MB): 0.01  
 Forward/backward pass size (MB): 1.71  
 Params size (MB): 0.60  
-Estimated Total Size (MB): 2.33  
-----------------------------------------------------------------    
+Estimated Total Size (MB): 2.33     
 
 ## Sample Images after Transformations    
 ![alt text](image.png)  
